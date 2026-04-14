@@ -1,4 +1,2 @@
 # Lana Khalifa — Portfolio
-
-please press: [github.com/LanaKhalifa]([https://github.com/LanaKhalifa](https://lanakhalifa.github.io/portfolio/#children))
-
+Please open the portfolio: **[lanakhalifa.github.io/portfolio](https://lanakhalifa.github.io/portfolio/#children)**
