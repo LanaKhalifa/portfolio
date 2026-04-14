@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lana Khalifa | Portfolio v2</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f7f7f7;
+      --ink: #000000;
+      --muted: #000000;
+      --accent: #000000;
+      --accent-soft: #d9d9d9;
+      --line: rgba(0, 0, 0, 0.22);
+      --topic: #b45309;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(80% 60% at 8% 0%, #f0f0f0 0%, transparent 55%),
+        radial-gradient(70% 55% at 92% 8%, #ececec 0%, transparent 56%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        -22deg,
+        rgba(0, 0, 0, 0.03) 0 1px,
+        transparent 1px 12px
+      );
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 320px;
+      height: 320px;
+      border-radius: 40% 60% 60% 40%;
+      top: -90px;
+      right: -90px;
+      background: linear-gradient(140deg, rgba(0, 0, 0, 0.12), rgba(180, 180, 180, 0.14));
+      filter: blur(8px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .container {
+      width: min(1160px, 93%);
+      margin: 0 auto;
+      padding: 24px 0 34px;
+    }
+
+    .hero {
+      padding: 8px 6px 20px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      align-items: start;
+      gap: 28px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.75rem, 3.7vw, 2.7rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #000000;
+      max-width: 760px;
+      position: relative;
+      display: inline-block;
+    }
+
+    h1::after {
+      content: "";
+      position: absolute;
+      left: 2px;
+      right: 0;
+      bottom: -6px;
+      height: 10px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.06));
+      z-index: -1;
+      transform: rotate(-1deg);
+    }
+
+    .tagline {
+      margin-top: 14px;
+      font-size: 1.03rem;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .overview {
+      margin-top: 22px;
+      width: 100%;
+    }
+
+    .overview-title {
+      margin: 0 0 10px;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #000000;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .overview-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.84);
+      padding: 14px 10px 12px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+      min-height: 116px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .overview-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.14);
+      border-color: rgba(0, 0, 0, 0.42);
+    }
+
+    .overview-symbol {
+      width: 54px;
+      height: 54px;
+      border-radius: 13px;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: #111111;
+      line-height: 1;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(237, 237, 237, 0.96));
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6), 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .overview-label {
+      display: block;
+      margin-top: 8px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--topic);
+      letter-spacing: 0.01em;
+      font-weight: 600;
+    }
+
+    .section-anchor {
+      margin-top: 28px;
+      padding: 14px 2px 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+
+    #masters {
+      margin-bottom: 0;
+    }
+
+    .section-anchor h2 {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+      color: var(--topic);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+      padding-bottom: 8px;
+    }
+
+    .masters-heading-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+
+    .masters-heading-row h2 {
+      margin: 0;
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .masters-heading-links {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .section-anchor p {
+      margin: 0;
+      color: #000000;
+      font-size: 0.92rem;
+    }
+
+    .edu-item + .edu-item {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(0, 0, 0, 0.18);
+    }
+
+    .edu-row {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .edu-logo {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      display: block;
+      margin-top: 1px;
+    }
+
+    .edu-years {
+      font-size: 0.84rem;
+      color: #000000;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 4px;
+    }
+
+    .edu-degree {
+      margin: 0 0 3px;
+      font-size: 1rem;
+      color: #000000;
+    }
+
+    .edu-school {
+      margin: 0 0 7px;
+      font-size: 0.92rem;
+      color: #000000;
+    }
+
+    .edu-details {
+      margin: 0;
+      color: #000000;
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .bullet-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #000000;
+      font-size: 0.93rem;
+      line-height: 1.55;
+    }
+
+    .bullet-list li + li {
+      margin-top: 4px;
+    }
+
+    .bsc-lead {
+      margin: 0 0 12px;
+      color: #000000;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      max-width: 900px;
+      white-space: nowrap;
+    }
+
+    .bsc-layout {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 8px;
+      align-items: start;
+    }
+
+    .bsc-block {
+      border: 2px solid #000000;
+      border-radius: 8px;
+      padding: 8px;
+      height: fit-content;
+    }
+
+    .children-inline-subsection {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .bsc-block h3 {
+      margin: 0 0 10px;
+      font-size: 0.9rem;
+      color: #000000;
+      font-weight: 600;
+      letter-spacing: 0.005em;
+      background: linear-gradient(180deg, rgba(180, 83, 9, 0.14), rgba(180, 83, 9, 0.08));
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+
+    .masters-panel {
+      margin-top: 10px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      padding: 0;
+      box-shadow: none;
+    }
+
+    .masters-top {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: start;
+      border-left: 2px solid rgba(122, 31, 42, 0.38);
+      padding-left: 14px;
+    }
+
+    .masters-lead {
+      margin: 0;
+      color: #141414;
+      font-size: 1rem;
+      line-height: 1.55;
+      max-width: 900px;
+    }
+
+    .masters-sub {
+      margin: 8px 0 0;
+      font-size: 0.86rem;
+      color: #47403f;
+      line-height: 1.5;
+      max-width: 900px;
+    }
+
+    .masters-metrics {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .metric {
+      border: 1px solid rgba(122, 31, 42, 0.2);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      padding: 5px 10px;
+      text-align: left;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .metric-value {
+      margin: 0;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #6b1721;
+      line-height: 1;
+    }
+
+    .metric-label {
+      margin: 0;
+      font-size: 0.76rem;
+      color: #564d4b;
+      line-height: 1.2;
+    }
+
+    .masters-block {
+      border-top: 1px solid rgba(0, 0, 0, 0.14);
+      border-left: 0;
+      padding-left: 0;
+      padding-top: 10px;
+      margin-top: 10px;
+      max-width: 930px;
+    }
+
+    .masters-block h3 {
+      margin: 0 0 7px;
+      font-size: 0.88rem;
+      color: #6b1721;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: none;
+    }
+
+    .masters-points {
+      margin: 0;
+      padding-left: 16px;
+      font-size: 0.86rem;
+      line-height: 1.45;
+      color: #111111;
+    }
+
+    .masters-points li + li {
+      margin-top: 4px;
+    }
+
+    .masters-links {
+      margin-top: 11px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .masters-link {
+      display: inline-block;
+      color: #4a1a20;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-size: 0.8rem;
+      line-height: 1.2;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      border-radius: 0;
+    }
+
+    .masters-link:hover {
+      color: #7a1f2a;
+    }
+
+    .masters-gallery {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      grid-template-rows: 110px 110px;
+      gap: 8px;
+      max-width: 760px;
+    }
+
+    .masters-gallery .figure-image {
+      margin-top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 8px;
+      border-color: rgba(0, 0, 0, 0.24);
+    }
+
+    .masters-gallery .figure-image:nth-child(1) {
+      grid-row: 1 / span 2;
+    }
+
+    .image-placeholder {
+      margin-top: 10px;
+      border: 1px dashed rgba(0, 0, 0, 0.35);
+      border-radius: 8px;
+      width: min(220px, 100%);
+      aspect-ratio: 4 / 3;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #555555;
+      background: #fafafa;
+      padding: 8px;
+      cursor: zoom-in;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      transform-origin: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .image-placeholder:hover {
+      transform: scale(2.6);
+      box-shadow: 0 22px 36px rgba(0, 0, 0, 0.32);
+      border-color: rgba(0, 0, 0, 0.55);
+      z-index: 20;
+    }
+
+    .image-row {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .image-row .image-placeholder {
+      margin-top: 0;
+      width: min(118px, calc(50% - 4px));
+      font-size: 0.72rem;
+      line-height: 1.25;
+      padding: 6px;
+    }
+
+    .figure-image {
+      margin-top: 10px;
+      width: min(320px, 100%);
+      border: 1px solid rgba(0, 0, 0, 0.22);
+      border-radius: 8px;
+      display: block;
+      background: #ffffff;
+    }
+
+    .preschool-gallery {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .preschool-gallery .figure-image {
+      margin-top: 0;
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .figure-image.tiny {
+      width: min(95px, 100%);
+      opacity: 0.92;
+    }
+
+    .bsc-support-figure {
+      margin-top: 8px;
+      width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.22);
+      border-radius: 8px;
+      display: block;
+      background: #ffffff;
+    }
+
+    .bsc-support-pdf {
+      height: 260px;
+    }
+
+    .record-excellence-image {
+      width: min(170px, 100%);
+    }
+
+    .figure-image.tiny.zoomable {
+      transform-origin: left center;
+    }
+
+    .figure-image.zoomable {
+      cursor: zoom-in;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      transform-origin: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .figure-image.zoomable:hover {
+      transform: scale(2.6);
+      box-shadow: 0 22px 36px rgba(0, 0, 0, 0.32);
+      border-color: rgba(0, 0, 0, 0.55);
+      z-index: 20;
+    }
+
+    .figure-image.tiny.zoomable:hover {
+      transform: scale(4.2);
+    }
+
+    .figure-image.zoomable:hover,
+    .figure-with-legend:hover {
+      transform: scale(1.04);
+      box-shadow: 0 14px 24px rgba(0, 0, 0, 0.24);
+      border-color: rgba(0, 0, 0, 0.45);
+      z-index: 30;
+    }
+
+    .figure-image.zoomable,
+    .figure-with-legend {
+      cursor: zoom-in;
+    }
+
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      padding: 2vh 2vw;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.open {
+      display: flex;
+    }
+
+    .lightbox-image {
+      max-width: 92vw;
+      max-height: 92vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      border-radius: 8px;
+      box-shadow: 0 24px 40px rgba(0, 0, 0, 0.45);
+      background: #fff;
+    }
+
+    .masters-down-arrow-center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .masters-poster {
+      width: min(240px, 100%);
+      transform-origin: left top;
+    }
+
+    .masters-poster.zoomable:hover {
+      transform: scale(1.85);
+    }
+
+    .masters-poster-stack {
+      width: min(240px, 100%);
+    }
+
+    .masters-step-outline {
+      border: 2px solid #000000;
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    .masters-step-6-shared {
+      border: 2px solid #000000;
+      border-radius: 8px;
+      padding: 8px;
+      margin-top: 8px;
+      margin-left: calc(-100% - 12px);
+      width: calc(200% + 12px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: start;
+      position: relative;
+    }
+
+    .masters-step-6-shared::before {
+      content: "←";
+      position: absolute;
+      left: -34px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #7a1f2a;
+      font-size: 2.2rem;
+      line-height: 1;
+      font-weight: 800;
+      width: 1.2em;
+      text-align: center;
+      user-select: none;
+    }
+
+    .masters-step-6-pane {
+      min-width: 0;
+    }
+
+    .masters-dual-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .masters-step-6-single {
+      margin-left: 0;
+      width: 100%;
+      grid-template-columns: 1fr;
+    }
+
+    .masters-step-6-single::before {
+      display: none;
+    }
+
+    .masters-train-left {
+      margin-top: 16px;
+    }
+
+
+    .masters-flow {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      width: fit-content;
+      max-width: 100%;
+      flex-wrap: nowrap;
+    }
+
+    .masters-arrow-inline {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #7a1f2a;
+      margin: 0 1px;
+      width: 1.2em;
+      text-align: center;
+      align-self: flex-start;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7), 0 2px 8px rgba(122, 31, 42, 0.18);
+      user-select: none;
+    }
+
+    .masters-arrow-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      align-self: flex-start;
+    }
+
+    .masters-arrow-inline-bottom {
+      margin-top: 800px;
+    }
+
+    .masters-arrow-inline-bottom-34 {
+      margin-top: 490px;
+    }
+
+    .masters-poster-caption {
+      border: 0;
+      border-radius: 10px;
+      background: linear-gradient(180deg, rgba(180, 83, 9, 0.14), rgba(180, 83, 9, 0.08));
+      box-shadow: none;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .masters-poster-stack .masters-lead,
+    .masters-poster-stack .masters-sub {
+      max-width: 100%;
+      color: #181818;
+    }
+
+    .masters-poster-stack .masters-sub {
+      margin-bottom: 0;
+    }
+
+    .masters-figure-caption {
+      margin: 6px 0 0;
+      font-size: 0.75rem;
+      color: #3f3a39;
+      line-height: 1.35;
+    }
+
+    .masters-down-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 8px 0 0;
+      color: #7a1f2a;
+      font-size: 2.2rem;
+      line-height: 1;
+      font-weight: 800;
+      width: 1.2em;
+      user-select: none;
+    }
+
+    .masters-closure-left {
+      margin-top: -90px;
+      margin-left: calc(-360% - 48px);
+      width: calc(220% + 20px);
+    }
+
+    .closure-figure-row {
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .closure-figure-row .figure-image,
+    .closure-figure-row .masters-poster {
+      margin-top: 0;
+      width: 100%;
+    }
+
+    .masters-run-label {
+      margin: 0;
+      text-align: center;
+    }
+
+    .masters-arch-grid {
+      margin-top: 8px;
+      display: grid;
+      gap: 10px;
+      justify-items: center;
+    }
+
+    .masters-arch-item {
+      margin: 0;
+    }
+
+    .masters-arch-title {
+      margin: 0 0 4px;
+      font-size: 0.74rem;
+      color: #3f3a39;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .masters-arch-item .figure-image {
+      margin-top: 0;
+      width: min(150px, 100%);
+    }
+
+    .masters-mini-list {
+      margin: 6px 0 0;
+      padding-left: 16px;
+      font-size: 0.75rem;
+      color: #3f3a39;
+      line-height: 1.35;
+    }
+
+    .masters-mini-list li + li {
+      margin-top: 3px;
+    }
+
+    .masters-legend {
+      margin-top: 6px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 6px 7px;
+      font-size: 0.72rem;
+      color: #2f2a29;
+      line-height: 1.35;
+    }
+
+    .figure-with-legend {
+      position: relative;
+      margin-top: 8px;
+      width: min(240px, 100%);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      transform-origin: left top;
+      z-index: 1;
+    }
+
+    .figure-with-legend:hover {
+      transform: scale(1.04);
+      z-index: 30;
+    }
+
+    .figure-with-legend .figure-image {
+      margin-top: 0;
+      width: 100%;
+    }
+
+    .figure-with-legend .figure-image.zoomable:hover {
+      transform: none;
+      box-shadow: none;
+      border-color: rgba(0, 0, 0, 0.22);
+      z-index: 1;
+    }
+
+    .figure-legend-extension {
+      margin: 0;
+      border-top: 0;
+      border-radius: 0 0 8px 8px;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .figure-with-legend .figure-image + .figure-legend-extension {
+      margin-top: 0;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-top: 0;
+    }
+
+    .masters-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .masters-legend-item + .masters-legend-item {
+      margin-top: 4px;
+    }
+
+    .masters-swatch {
+      width: 11px;
+      height: 11px;
+      border: 1px solid rgba(0, 0, 0, 0.32);
+      border-radius: 2px;
+      flex: 0 0 auto;
+    }
+
+    .masters-swatch-3dep {
+      background: #5ecb82;
+    }
+
+    .masters-swatch-dry {
+      background: repeating-linear-gradient(
+        -45deg,
+        #f7f7f7 0 2px,
+        #6b6b6b 2px 3px
+      );
+    }
+
+    .masters-swatch-overlap {
+      background: #d2aa3b;
+    }
+
+    .masters-swatch-river {
+      background: #8fb6e6;
+    }
+
+    .masters-swatch-clipped {
+      background: linear-gradient(135deg, #d8d8d8 0%, #7f7f7f 55%, #e8e8e8 100%);
+    }
+
+    .image-row .figure-image {
+      margin-top: 0;
+      width: min(160px, calc(50% - 4px));
+    }
+
+    .doi-note {
+      margin-top: 8px;
+      font-size: 0.82rem;
+      color: #2f2f2f;
+      line-height: 1.4;
+    }
+
+    .text-block {
+      padding-top: 14px;
+    }
+
+    .mini-photo-wrap {
+      width: 160px;
+      border-radius: 20px;
+      padding: 6px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(231, 231, 231, 0.95));
+      box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.16),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+      flex: 0 0 auto;
+      overflow: hidden;
+      transform: none;
+      position: relative;
+    }
+
+    .mini-photo-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.68);
+      pointer-events: none;
+    }
+
+    .mini-photo {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      display: block;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (max-width: 900px) {
+      .hero-layout {
+        grid-template-columns: 118px 1fr;
+        gap: 14px;
+      }
+
+      .mini-photo-wrap {
+        width: 96px;
+        border-radius: 12px;
+        transform: none;
+      }
+
+      .mini-photo { border-radius: 8px; }
+
+      .overview-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .overview-card {
+        min-height: 100px;
+        padding: 12px 8px 10px;
+      }
+
+      .overview-symbol {
+        width: 46px;
+        height: 46px;
+        font-size: 1.3rem;
+        border-radius: 11px;
+      }
+
+      .overview-label {
+        font-size: 0.74rem;
+      }
+
+      .edu-row {
+        grid-template-columns: 34px 1fr;
+        gap: 10px;
+      }
+
+      .edu-logo {
+        width: 30px;
+        height: 30px;
+      }
+
+      .bsc-layout {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .masters-metrics {
+        display: flex;
+      }
+
+      .masters-gallery .figure-image {
+        height: 96px;
+      }
+
+      .masters-gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        max-width: 320px;
+      }
+
+      .masters-flow {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .masters-gallery .figure-image:nth-child(1) {
+        grid-row: auto;
+      }
+
+      .masters-step-6-shared {
+        margin-left: 0;
+        width: 100%;
+        grid-template-columns: 1fr;
+      }
+
+      .masters-dual-row {
+        grid-template-columns: 1fr;
+      }
+
+      .masters-step-6-shared::before {
+        display: none;
+      }
+
+      .masters-closure-left {
+        margin-top: 8px;
+        margin-left: 0;
+        width: 100%;
+      }
+
+      .closure-figure-row {
+        grid-template-columns: 1fr;
+      }
+
+      .image-placeholder {
+        width: min(240px, 100%);
+      }
+
+      .image-placeholder:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .image-row .image-placeholder {
+        width: min(116px, calc(50% - 4px));
+      }
+
+      .figure-image.zoomable:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .bsc-lead {
+        white-space: normal;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <div class="hero-layout">
+        <div class="mini-photo-wrap">
+          <img class="mini-photo" src="embedded-001.jpg" alt="Lana Khalifa portrait">
+        </div>
+        <div class="text-block">
+          <h1>Lana Khalifa</h1>
+          <p class="tagline">Environmental Engineer | Machine Learning</p>
+        </div>
+      </div>
+      <div class="overview" aria-label="Portfolio topics overview">
+        <p class="overview-title">Portfolio Overview</p>
+        <div class="overview-grid">
+          <a class="overview-card" href="#education" aria-label="Go to Education section">
+            <span class="overview-symbol" aria-hidden="true">◈</span>
+            <span class="overview-label">Education</span>
+          </a>
+          <a class="overview-card" href="#bachelors" aria-label="Go to B.Sc. section">
+            <span class="overview-symbol" aria-hidden="true">▦</span>
+            <span class="overview-label">BSc</span>
+          </a>
+          <a class="overview-card" href="#masters" aria-label="Go to Master's Research section">
+            <span class="overview-symbol" aria-hidden="true">∿</span>
+            <span class="overview-label">MSc</span>
+          </a>
+          <a class="overview-card" href="#work" aria-label="Go to Work Experience section">
+            <span class="overview-symbol" aria-hidden="true">✧</span>
+            <span class="overview-label">Work Experience</span>
+          </a>
+          <a class="overview-card" href="#children" aria-label="Go to Children section">
+            <span class="overview-symbol" aria-hidden="true">◍</span>
+            <span class="overview-label">Children</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section-anchor">
+      <h2>Education</h2>
+      <article class="edu-item">
+        <div class="edu-row">
+          <img class="edu-logo" src="embedded-002.png" alt="Technion logo">
+          <div>
+            <div class="edu-years">2021-2024</div>
+            <h3 class="edu-degree">M.Sc. in Environmental Engineering</h3>
+            <p class="edu-school">Technion - Israel Institute of Technology</p>
+            <p class="edu-details">Thesis: Deep Learning for Flood Modeling: Generalizing Across Terrain and Flood Event Variations (Technion Environmatics Lab, TechEL).</p>
+          </div>
+        </div>
+      </article>
+      <article class="edu-item">
+        <div class="edu-row">
+          <img class="edu-logo" src="embedded-003.png" alt="Technion logo">
+          <div>
+            <div class="edu-years">2016-2021</div>
+            <h3 class="edu-degree">B.Sc. in Environmental Engineering</h3>
+            <p class="edu-school">Technion - Israel Institute of Technology</p>
+            <p class="edu-details">Final Project: Abatement Cost Calculation of Biomass-Based Fuels through Monte Carlo Simulation (Prospective and Early-Stage LCA Lab, PSELL).</p>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section id="bachelors" class="section-anchor">
+      <h2>B.Sc. in Environmental Engineering</h2>
+      <p class="bsc-lead">During my studies at Technion, I pursued sea-and-atmosphere electives and developed strong skills in environmental modeling, numerical methods and coding.</p>
+
+      <div class="bsc-layout">
+        <div class="bsc-block">
+          <h3>Academic Distinctions</h3>
+          <ul class="bullet-list">
+            <li>Awarded a first-year merit scholarship for an outstanding entrance score.</li>
+            <li>Dean's Honor List (Spring 2018/19).</li>
+            <li>President's Honor List (Winter 2017/18).</li>
+          </ul>
+          <img class="bsc-support-figure figure-image zoomable record-excellence-image zoom-shift-right-xxl" src="record_of_excellence.png" alt="Record of Excellence">
+        </div>
+        <div class="bsc-block">
+          <h3>Research (Student Position)</h3>
+          <ul class="bullet-list">
+            <li>Co-authored a life cycle assessment study on plastic biodegradation by larvae at the PESLL lab, under the supervision of Prof. Sabrina Spatari.</li>
+          </ul>
+          <img class="figure-image zoomable" src="embedded-004.png" alt="First page of published article on plastic biodegradation by larvae">
+          <p class="doi-note"><a href="https://doi.org/10.1016/j.scitotenv.2020.139521" target="_blank" rel="noopener noreferrer">DOI: 10.1016/j.scitotenv.2020.139521</a></p>
+        </div>
+        <div class="bsc-block">
+          <h3>Final Project</h3>
+          <ul class="bullet-list">
+            <li>Topic: Abatement Cost Calculation of Biomass-Based Fuels through Monte Carlo Simulation.</li>
+            <li>Awarded the <a href="https://shnabel.org.il/award-2021-en.htm" target="_blank" rel="noopener noreferrer">Moshe Shnabel Scholarship</a> for Creativity and Excellence in Civil and Environmental Engineering.</li>
+          </ul>
+          <img class="bsc-support-figure figure-image zoomable zoom-shift-right-xxl" src="Abatement_Costs.png" alt="Abatement cost distribution for biomass-based fuels">
+          <p class="masters-figure-caption">Abatement-cost distributions from Monte Carlo analysis across biomass pathways. The unit is <strong>$/ton CO2</strong>, meaning the cost to avoid one ton of CO2 emissions. Pathways differ by feedstock and by conversion route.</p>
+        </div>
+      </div>
+
+    </section>
+    <section id="masters" class="section-anchor">
+      <div class="masters-heading-row">
+        <h2>M.Sc. in Environmental Engineering</h2>
+        <div class="masters-heading-links">
+          <a class="masters-link" href="https://github.com/LanaKhalifa/deep-learning-flood-modeling" target="_blank" rel="noopener noreferrer">github</a>
+          <a class="masters-link" href="https://fishbain.net.technion.ac.il/files/2025/10/Deep-Learning-Methodology-for-Scalable-Emulation-of-Hydrodynamic-Flood-Simulations-Across-Diverse-Terrains-and-Conditions.pdf" target="_blank" rel="noopener noreferrer">manuscript</a>
+        </div>
+      </div>
+      <div class="masters-flow">
+        <div class="masters-poster-stack masters-step-outline">
+          <div class="masters-poster-caption">
+            <p class="masters-lead"><strong>Project concept</strong> presented in poster form at Faculty Research Day (March 2024).</p>
+            <p class="masters-sub">(before implementation)</p>
+          </div>
+          <img class="figure-image zoomable masters-poster zoom-shift-right-xl" src="embedded-005.png" alt="Poster presenting the project idea before implementation">
+        </div>
+        <div class="masters-arrow-inline" aria-hidden="true">→</div>
+        <div class="masters-poster-stack masters-step-outline">
+          <div class="masters-poster-caption">
+            <p class="masters-lead"><strong>Data acquisition</strong> for flood simulations</p>
+          </div>
+          <div class="figure-with-legend">
+            <img class="figure-image zoomable masters-poster" src="embedded-006.png" alt="Terrain selection from high-quality DEM and dry ecoregions overlap">
+            <div class="masters-legend figure-legend-extension" aria-label="Legend for terrain selection map">
+              <div class="masters-legend-item"><span class="masters-swatch masters-swatch-3dep" aria-hidden="true"></span><span>Available high-quality 3DEP DEM coverage</span></div>
+              <div class="masters-legend-item"><span class="masters-swatch masters-swatch-dry" aria-hidden="true"></span><span>Dry ecoregions (hot, dry summers)</span></div>
+              <div class="masters-legend-item"><span class="masters-swatch masters-swatch-overlap" aria-hidden="true"></span><span>Elevations measured in summer</span></div>
+            </div>
+          </div>
+          <p class="masters-figure-caption">Spatial overlap used to identify terrain candidates for flood simulations.</p>
+          <div class="masters-down-arrow" aria-hidden="true">↓</div>
+          <div class="figure-with-legend">
+            <img class="figure-image zoomable masters-poster" src="embedded-007.png" alt="Example of terrain tiles clipped from selected overlap areas">
+            <div class="masters-legend figure-legend-extension" aria-label="Legend for clipped terrains figure">
+              <div class="masters-legend-item"><span class="masters-swatch masters-swatch-overlap" aria-hidden="true"></span><span>Overlap candidate region</span></div>
+              <div class="masters-legend-item"><span class="masters-swatch masters-swatch-dry" aria-hidden="true"></span><span>Dry ecoregions</span></div>
+              <div class="masters-legend-item"><span class="masters-swatch masters-swatch-river" aria-hidden="true"></span><span>Intermittent rivers</span></div>
+              <div class="masters-legend-item"><span class="masters-swatch masters-swatch-clipped" aria-hidden="true"></span><span>Clipped terrain tiles used for simulations</span></div>
+            </div>
+          </div>
+          <p class="masters-figure-caption">Example: terrain rectangles clipped from the overlap of high-quality, summer-measured elevations, dry ecoregions, and intermittent rivers to define simulation domains.</p>
+          <p class="masters-figure-caption"><strong>Overall number of terrains:</strong> 210</p>
+        </div>
+        <div class="masters-arrow-stack" aria-hidden="true">
+          <div class="masters-arrow-inline">→</div>
+          <div class="masters-arrow-inline masters-arrow-inline-bottom">←</div>
+        </div>
+        <div class="masters-poster-stack">
+          <div class="masters-step-outline">
+            <div class="masters-poster-caption">
+              <p class="masters-lead"><strong>simulations' setup</strong> (210 in total)</p>
+            </div>
+            <img class="figure-image zoomable masters-poster setup-zoom-large" src="embedded-008.png" alt="Overlayed simulation grid with sub-grid bathymetry detail">
+            <p class="masters-figure-caption">Overlayed grid (one example out of 210).</p>
+            <img class="figure-image zoomable masters-poster setup-zoom-large" src="embedded-009.png" alt="Simulation inputs including terrain data and hydrograph boundary conditions">
+            <p class="masters-figure-caption">Water inlets and example hydrographs.</p>
+            <div class="masters-down-arrow" aria-hidden="true">↓</div>
+            <p class="masters-figure-caption masters-run-label"><strong>RUN!</strong></p>
+          </div>
+          <div class="masters-step-outline masters-train-left">
+              <div class="masters-poster-caption">
+                <p class="masters-lead"><strong>train</strong> and <strong>test</strong></p>
+              </div>
+              <img class="figure-image zoomable masters-poster zoom-shift-right-xl" src="embedded-010.png" alt="Training and validation loss curves used to compare deep learning architectures">
+              <img class="figure-image zoomable masters-poster zoom-shift-right-xl" src="predictions.png" alt="Model predictions compared with targets and error maps">
+            </div>
+        </div>
+        <div class="masters-arrow-stack" aria-hidden="true">
+          <div class="masters-arrow-inline">→</div>
+          <div class="masters-arrow-inline masters-arrow-inline-bottom-34">←</div>
+        </div>
+        <div class="masters-poster-stack">
+          <div class="masters-step-outline">
+            <div class="masters-poster-caption">
+              <p class="masters-lead">preprocessing: from <strong>simulations</strong> to <strong>patches</strong></p>
+            </div>
+            <img class="figure-image zoomable masters-poster zoom-shift-right-xl" src="embedded-011.png" alt="Workflow showing transformation from simulation outputs into patch-based datasets over time">
+            <p class="masters-figure-caption">Producing and augmenting patches from one simulation result.</p>
+            <img class="figure-image zoomable masters-poster zoom-shift-right-xl" src="one_sample.png" alt="Input and output of one sample">
+            <p class="masters-figure-caption">Input and output of each sample.</p>
+          </div>
+          <div class="masters-down-arrow masters-down-arrow-center" aria-hidden="true">↓</div>
+          <div class="masters-step-outline">
+            <div class="masters-poster-caption">
+              <p class="masters-lead"><strong>Deep learning architectures</strong>: benchmarking and custom design</p>
+            </div>
+            <p class="masters-figure-caption"><strong>Examples</strong></p>
+            <div class="masters-arch-grid" aria-label="Implemented deep learning architectures">
+              <figure class="masters-arch-item">
+                <figcaption class="masters-arch-title">Simplified UNet</figcaption>
+                <img class="figure-image zoomable masters-poster" src="embedded-012.png" alt="Simplified UNet architecture diagram">
+              </figure>
+              <figure class="masters-arch-item">
+                <figcaption class="masters-arch-title">Encoder-Decoder with Self-Attention</figcaption>
+                <img class="figure-image zoomable masters-poster" src="embedded-013.png" alt="Encoder-decoder architecture with self-attention">
+              </figure>
+              <figure class="masters-arch-item">
+                <figcaption class="masters-arch-title">Custom Architecture</figcaption>
+                <img class="figure-image zoomable masters-poster" src="embedded-014.png" alt="Custom deep learning architecture diagram">
+              </figure>
+            </div>
+          </div>
+          
+          <div class="masters-step-outline masters-closure-left">
+            <div class="masters-poster-caption">
+              <p class="masters-lead"><strong>closure model</strong>: from <strong>patches</strong> to <strong>full</strong> domain</p>
+            </div>
+            <div class="closure-figure-row">
+              <img class="figure-image zoomable masters-poster zoom-shift-left" src="embedded-015.png" alt="Closure model patch traversal sequences used to iteratively fill the full domain from patch predictions">
+              <img class="figure-image zoomable masters-poster zoom-shift-left" src="embedded-016.png" alt="Example of closure model applied to an unseen simulation timestep">
+            </div>
+            <p class="masters-figure-caption">Left: A non-DL iterative closure model. Patch locations evolve at each iteration, updating next-step boundaries until the full-domain solution stabilizes. Right: Closure applied on an unseen simulation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="work" class="section-anchor">
+      <h2>Work Experience</h2>
+
+      <article class="edu-item">
+        <div class="edu-years">2025-2026</div>
+        <h3 class="edu-degree">Senior Coordinator for Urban Flooding</h3>
+        <p class="edu-school">The Israeli Water Authority</p>
+        <ul class="bullet-list">
+          <li>Left the role to pursue a career transition toward early childhood education.</li>
+        </ul>
+      </article>
+      <article class="edu-item">
+        <div class="edu-years">2024-2025</div>
+        <h3 class="edu-degree">Research Assistant</h3>
+        <p class="edu-school">Technion Research &amp; Development Foundation</p>
+        <ul class="bullet-list">
+          <li>Prepared calculations and figures for a scientific study based on an expanded version of my B.Sc. final project.</li>
+        </ul>
+      </article>
+      <article class="edu-item">
+        <div class="edu-years">2022-2024</div>
+        <h3 class="edu-degree">Teacher Assistant</h3>
+        <p class="edu-school">Technion - Israel Institute of Technology</p>
+        <ul class="bullet-list">
+          <li>Assisted in teaching undergraduate courses: Introduction to Numerical Methods, Statistics, and Fundamentals of Fluid Mechanics.</li>
+        </ul>
+      </article>
+      <article class="edu-item">
+        <div class="edu-years">2019-2021</div>
+        <h3 class="edu-degree">Student Position</h3>
+        <p class="edu-school">Technion Research &amp; Development Foundation</p>
+        <ul class="bullet-list">
+          <li>Co-authored a research article on plastic biodegradation by larvae using life cycle assessment.</li>
+        </ul>
+      </article>
+    </section>
+    <section id="children" class="section-anchor">
+      <h2>Children</h2>
+      <article class="edu-item">
+                <div class="bsc-layout">
+          <div class="bsc-block">
+            <h3>Preschool Search</h3>
+            <ul class="bullet-list">
+              <li>Currently visiting kindergartens to find a Montessori preschool assistant role.</li>
+            </ul>
+            <div class="children-inline-subsection">
+              <h3>Research Interests</h3>
+              <ul class="bullet-list">
+              <li>Developing AI methods to study learning behaviors in early childhood settings (ages 3-6), supporting both individualized learning trajectories and understanding of the overall classroom state.</li>
+              <li>I am especially interested in multi-modal ML: computer vision + audio.</li>
+            </ul>
+            </div>
+          </div>
+          <div class="bsc-block">
+            <h3>AI-Assisted Workshop Ideas</h3>
+            <ul class="bullet-list">
+              <li>Developing workshop ideas, utilizing language models.</li>
+            </ul>
+            <p class="masters-figure-caption">AI-generated examples:</p>
+            <div class="preschool-gallery">
+              <img class="figure-image zoomable" src="mooving_walls_1.png" alt="AI-generated workshop concept 1">
+              <img class="figure-image zoomable" src="mooving_walls_2.png" alt="AI-generated workshop concept 2">
+              <img class="figure-image zoomable" src="mooving_walls_3.png" alt="AI-generated workshop concept 3">
+            </div>
+          </div>
+          <div class="bsc-block">
+            <h3>Neighborhood Implementation</h3>
+            <ul class="bullet-list">
+              <li>Implementing the ideas with children in my neighborhood.</li>
+            </ul>
+            <div class="preschool-gallery">
+              <img class="figure-image zoomable" src="neighborhood1.png" alt="Children implementing an activity concept">
+              <img class="figure-image zoomable" src="neighborhood2.png" alt="Children collaborating on a workshop activity">
+            </div>
+          </div>
+        </div>
+      </article>
+</section>
+  </main>
+  <div id="lightbox" class="lightbox-overlay" aria-hidden="true">
+    <img id="lightbox-image" class="lightbox-image" alt="Expanded figure">
+  </div>
+
+  <script>
+    (function () {
+      const overlay = document.getElementById('lightbox');
+      const overlayImage = document.getElementById('lightbox-image');
+      if (!overlay || !overlayImage) return;
+
+      const clickableFigures = Array.from(document.querySelectorAll('.figure-image.zoomable'));
+
+      const openLightbox = (src, alt) => {
+        if (!src) return;
+        overlayImage.src = src;
+        overlayImage.alt = alt || 'Expanded figure';
+        overlay.classList.add('open');
+        overlay.setAttribute('aria-hidden', 'false');
+      };
+
+      const closeLightbox = () => {
+        overlay.classList.remove('open');
+        overlay.setAttribute('aria-hidden', 'true');
+        overlayImage.src = '';
+      };
+
+      clickableFigures.forEach((img) => {
+        img.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          openLightbox(img.getAttribute('src'), img.getAttribute('alt'));
+        });
+      });
+
+      overlay.addEventListener('click', closeLightbox);
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && overlay.classList.contains('open')) {
+          closeLightbox();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
